@@ -80,7 +80,7 @@ export async function getLinuxEncryptionKey(
   // Linux v10 uses "peanuts"; v11 requires OS key storage, and CBC cannot authenticate a wrong key.
   const v10Key = pbkdf2Sync('peanuts', PBKDF2_SALT, 1, PBKDF2_KEY_LENGTH, 'sha1')
 
-  let keyringPassword = ''
+  let keyringPassword: string | null = null
   let keyringFailure: LinuxCookieKeyFailure = 'key-unavailable'
   for (const args of [
     ['lookup', 'service', keychainService, 'account', keychainAccount],

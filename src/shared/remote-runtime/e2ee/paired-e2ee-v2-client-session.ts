@@ -69,7 +69,7 @@ export class PairedE2EEV2ClientSession {
     if (!handshake || !equalBytes(handshake.desktopPublicKey, this.pinnedDesktopPublicKey)) {
       return false
     }
-    this.schedule = this.primitives.deriveV2KeySchedule({
+    this.schedule = this.primitives.deriveV2Schedule({
       sharedSecret: this.primitives.deriveSharedKey(
         this.clientSecretKey,
         this.pinnedDesktopPublicKey

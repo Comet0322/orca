@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto'
 import { BrowserWindow, ipcMain } from 'electron'
 import type { OrcaRuntimeService } from '../runtime/orca-runtime'
 import type {
@@ -25,6 +26,9 @@ function boundTerminalFitRestore(pending: Promise<boolean>): Promise<boolean> {
   })
   return Promise.race([pending, deadline]).finally(() => clearTimeout(timer))
 }
+
+// Why: in-process callers need a non-empty caller credential; per-launch random avoids a fixed literal.
+const DESKTOP_IPC_AUTH = randomUUID()
 
 export function registerRuntimeHandlers(runtime: OrcaRuntimeService): void {
   const pendingTerminalFitRestores = new Map<string, Promise<boolean>>()
@@ -94,7 +98,7 @@ export function registerRuntimeHandlers(runtime: OrcaRuntimeService): void {
       return new RpcDispatcher({ runtime, methods: ALL_RPC_METHODS }).dispatch(
         {
           id: 'desktop-ipc',
-          authToken: 'desktop-ipc',
+          authToken: DESKTOP_IPC_AUTH,
           method: args.method,
           params: args.params
         },
@@ -129,7 +133,7 @@ export function registerRuntimeHandlers(runtime: OrcaRuntimeService): void {
       void new RpcDispatcher({ runtime, methods: ALL_RPC_METHODS }).dispatchStreamingObjects(
         {
           id: args.subscriptionId,
-          authToken: 'desktop-ipc',
+          authToken: DESKTOP_IPC_AUTH,
           method: args.method,
           params: args.params
         },

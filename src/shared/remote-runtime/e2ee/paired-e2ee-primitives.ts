@@ -30,7 +30,7 @@ export type PairedE2EEPrimitives = {
   decodeCanonicalBase64?: (value: string) => Uint8Array | null
   decodeUtf8?: (bytes: Uint8Array) => string
   // Why injected: Node uses node:crypto, so the CLI's unbundled runtime needs no extra package.
-  deriveV2KeySchedule: (args: {
+  deriveV2Schedule: (args: {
     sharedSecret: Uint8Array
     transcript: Uint8Array
     clientNonce: Uint8Array

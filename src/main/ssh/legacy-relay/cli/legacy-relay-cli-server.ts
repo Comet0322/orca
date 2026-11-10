@@ -38,6 +38,8 @@ import {
 import { formatLegacyRelayCliResult, isRecord } from './legacy-relay-cli-output'
 import type { LegacyRelayLivePane } from '../bridge/legacy-relay-bridge-leases'
 
+const LEGACY_RELAY_CLI_AUTH = randomUUID()
+
 const METHODS: ReadonlySet<string> = new Set([
   'orchestration.check',
   'orchestration.inbox',
@@ -215,7 +217,7 @@ async function dispatchAsCaller(
     return await dispatcherFor(runtime).dispatch(
       {
         id: `legacy-relay-cli-${requestId}`,
-        authToken: 'legacy-relay-cli',
+        authToken: LEGACY_RELAY_CLI_AUTH,
         method: call.method,
         params: call.params,
         orchestrationContractVersion: ORCHESTRATION_CONTRACT_VERSION,

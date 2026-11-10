@@ -24,5 +24,5 @@ export const NODE_PAIRED_E2EE_PRIMITIVES: PairedE2EEPrimitives = {
   openLegacyText: decrypt,
   sealLegacyBinary: encryptBytes,
   openLegacyBinary: decryptBytes,
-  deriveV2KeySchedule: deriveMobileE2EEV2KeySchedule
+  deriveV2Schedule: deriveMobileE2EEV2KeySchedule
 }

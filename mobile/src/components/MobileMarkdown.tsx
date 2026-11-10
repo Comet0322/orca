@@ -92,7 +92,7 @@ function MobileMarkdownContent({
     chatMath,
     onOpenFile,
     onOpenLink,
-    filePathsLinkedInTree: fileLinkExists !== undefined,
+    filePathsLinkedToTree: fileLinkExists !== undefined,
     tone,
     textScale,
     listText: [styles.listText, scaledMarkdownText(styles.listText, textScale), tone.text],

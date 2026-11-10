@@ -19,7 +19,7 @@ export type MarkdownInlineContext = {
   // Web links other than mail go here; the screen decides where they open.
   onOpenLink: (url: string) => void
   /** Host-confirmed paths are already links in the tree; draw no others. */
-  filePathsLinkedInTree?: boolean
+  filePathsLinkedToTree?: boolean
   tone: MarkdownTone
   textScale: number
   /** Chat text: desktop chat's math delimiters and sizes; otherwise GitHub's. */
@@ -53,10 +53,10 @@ export function openMarkdownHref(
 function renderTextRun(
   text: string,
   key: string,
-  { onOpenFile, filePathsLinkedInTree, tone }: MarkdownInlineContext,
+  { onOpenFile, filePathsLinkedToTree, tone }: MarkdownInlineContext,
   outer: SpanStyle
 ): ReactNode {
-  if (!onOpenFile || filePathsLinkedInTree) {
+  if (!onOpenFile || filePathsLinkedToTree) {
     return text
   }
   const segments = detectFilePathSegments(text)
@@ -150,7 +150,7 @@ function renderPhrasing(
       )
     }
     case 'inlineCode':
-      return ctx.onOpenFile && !ctx.filePathsLinkedInTree && isFilePathCodeSpan(node.value)
+      return ctx.onOpenFile && !ctx.filePathsLinkedToTree && isFilePathCodeSpan(node.value)
         ? renderInlineCode(key, node.value, ctx, outer, () =>
             ctx.onOpenFile?.(normalizeFilePath(node.value.trim()))
           )

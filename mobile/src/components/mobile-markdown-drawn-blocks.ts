@@ -44,7 +44,7 @@ function sameContext(a: MarkdownBlockContext, b: MarkdownBlockContext): boolean 
     a.tone === b.tone &&
     a.onOpenFile === b.onOpenFile &&
     a.onOpenLink === b.onOpenLink &&
-    a.filePathsLinkedInTree === b.filePathsLinkedInTree &&
+    a.filePathsLinkedToTree === b.filePathsLinkedToTree &&
     a.rowLongPress === b.rowLongPress &&
     a.renderImage === b.renderImage &&
     a.renderVisual === b.renderVisual &&

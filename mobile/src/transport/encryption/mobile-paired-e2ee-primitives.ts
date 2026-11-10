@@ -39,5 +39,5 @@ export const MOBILE_PAIRED_E2EE_PRIMITIVES: PairedE2EEPrimitives = {
   decodeCanonicalBase64: decodeMobileCanonicalBase64,
   decodeUtf8: (bytes) =>
     pairedE2EENativeCodec()?.decodeUtf8(bytes) ?? new TextDecoder().decode(bytes),
-  deriveV2KeySchedule: derivePairedE2EEV2KeySchedule
+  deriveV2Schedule: derivePairedE2EEV2KeySchedule
 }

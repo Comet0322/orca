@@ -25,5 +25,5 @@ export const WEB_PAIRED_E2EE_PRIMITIVES: PairedE2EEPrimitives = {
   openLegacyText: decrypt,
   sealLegacyBinary: encryptBytes,
   openLegacyBinary: decryptBytes,
-  deriveV2KeySchedule: derivePairedE2EEV2KeySchedule
+  deriveV2Schedule: derivePairedE2EEV2KeySchedule
 }

@@ -9,7 +9,7 @@ const CRX_MAGIC = 'Cr24'
 const SIGNED_DATA_PREFIX = Buffer.from('CRX3 SignedData\x00', 'latin1')
 const MAX_HEADER_BYTES = 256 * 1024
 // SHA-256 of the Chrome Web Store publisher key; every store CRX carries a proof made with it.
-const WEB_STORE_PUBLISHER_KEY_HASH =
+const WEB_STORE_PUBLISHER_HASH =
   '61f7f2a6bfcf74cd0bc1fe2497cc9b04254c658f79f2145392867ea8366367cf'
 
 // CrxFileHeader / AsymmetricKeyProof / SignedData field numbers (crx3.proto).
@@ -177,7 +177,7 @@ export function verifyCrx3(
     if (extensionIdFromHash(keyHash) === declaredId) {
       developerKey = proof.publicKey
     }
-    if (keyHash.toString('hex') === WEB_STORE_PUBLISHER_KEY_HASH) {
+    if (keyHash.toString('hex') === WEB_STORE_PUBLISHER_HASH) {
       hasPublisherProof = true
     }
   }

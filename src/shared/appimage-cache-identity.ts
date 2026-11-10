@@ -7,7 +7,7 @@ import { APPIMAGE_NODE_RUNTIME_SEGMENTS } from './appimage-node-runtime'
 const CACHE_KEY_PATTERN = /^[0-9a-f]{24}$/u
 const LINUX_EXECUTABLE_NAME = 'orca-ide'
 // Version the namespace so older pruners cannot delete generations a newer build still runs; rollback reopens only the old namespace's risk.
-const NAMESPACE_KEY_VERSION = 'generation-lease-v1'
+const NAMESPACE_VERSION = 'generation-lease-v1'
 /** Beside a namespace's generations; not a cache key, so pruning skips it. */
 export const APPIMAGE_SOURCE_RECORD_NAME = 'source-appimage'
 
@@ -20,7 +20,7 @@ export function isAppImageCacheKey(value: string): boolean {
 }
 
 export function appImageNamespaceKey(appImagePath: string): string {
-  return appImageCacheDigest(`${NAMESPACE_KEY_VERSION}\0${appImagePath}`)
+  return appImageCacheDigest(`${NAMESPACE_VERSION}\0${appImagePath}`)
 }
 
 /** Exclude ctime: chmod/chown/ACL/relabel/restore changes metadata without changing payload and would force ~519MB re-extraction. Content changes move mtime/usually size; replacement changes inode. */
