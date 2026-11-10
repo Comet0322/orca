@@ -14,7 +14,7 @@ import {
 } from '../host-credentials/pairing-keychain'
 
 const JOURNAL_STORAGE_KEY = 'orca:mobile-relay:pairing-journal:v1'
-const JOURNAL_SECRET_KEY = 'orca.mobile-relay.pairing-journal.v1'
+const JOURNAL_ITEM_KEY = 'orca.mobile-relay.pairing-journal.v1'
 let journalMutation: Promise<void> = Promise.resolve()
 // Protect only attempts still running in this process; new scans may supersede ended or previous-launch recovery journals.
 const inFlightJournalIds = new Set<string>()
@@ -62,7 +62,7 @@ function replaceJournal(
     }
     // Write discoverable metadata before secrets so a crash cannot leave an untracked bearer.
     await AsyncStorage.setItem(JOURNAL_STORAGE_KEY, JSON.stringify(metadata))
-    await writePairingKeychainItem(JOURNAL_SECRET_KEY, JSON.stringify(secrets))
+    await writePairingKeychainItem(JOURNAL_ITEM_KEY, JSON.stringify(secrets))
     if (existing) {
       inFlightJournalIds.delete(existing.journalId)
     }
@@ -104,7 +104,7 @@ export async function loadMobileRelayPairingJournal(): Promise<MobileRelayPairin
   const load = journalMutation.then(async () => {
     const rawMetadata = await AsyncStorage.getItem(JOURNAL_STORAGE_KEY)
     if (rawMetadata === null) {
-      await deletePairingKeychainItem(JOURNAL_SECRET_KEY).catch(() => {})
+      await deletePairingKeychainItem(JOURNAL_ITEM_KEY).catch(() => {})
       return null
     }
     const metadata = parseMetadata(rawMetadata)
@@ -112,7 +112,7 @@ export async function loadMobileRelayPairingJournal(): Promise<MobileRelayPairin
       await removeIncompleteJournal()
       return null
     }
-    const rawSecrets = await readPairingKeychainItem(JOURNAL_SECRET_KEY)
+    const rawSecrets = await readPairingKeychainItem(JOURNAL_ITEM_KEY)
     if (rawSecrets === null) {
       await AsyncStorage.removeItem(JOURNAL_STORAGE_KEY)
       return null
@@ -135,7 +135,7 @@ export async function loadMobileRelayPairingJournal(): Promise<MobileRelayPairin
 async function removeIncompleteJournal(): Promise<void> {
   // Remove metadata before secrets so a second crash leaves only a self-cleaning orphan.
   await AsyncStorage.removeItem(JOURNAL_STORAGE_KEY)
-  await deletePairingKeychainItem(JOURNAL_SECRET_KEY).catch(() => {})
+  await deletePairingKeychainItem(JOURNAL_ITEM_KEY).catch(() => {})
 }
 
 export async function updateMobileRelayPairingJournal(
@@ -166,7 +166,7 @@ export async function clearMobileRelayPairingJournal(journalId: string): Promise
       throw new Error('stale mobile relay pairing journal')
     }
     await AsyncStorage.removeItem(JOURNAL_STORAGE_KEY)
-    await deletePairingKeychainItem(JOURNAL_SECRET_KEY)
+    await deletePairingKeychainItem(JOURNAL_ITEM_KEY)
     inFlightJournalIds.delete(journalId)
   })
   journalMutation = mutation.catch(() => {})

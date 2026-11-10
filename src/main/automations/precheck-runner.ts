@@ -1,4 +1,5 @@
 import { spawn, type ChildProcess } from 'node:child_process'
+import { shellCommandInvocation } from '../shell-command-invocation'
 import type { ClientChannel } from 'ssh2'
 import type { AutomationPrecheck } from '../../shared/automations/automation-definition'
 import type { AutomationPrecheckResult } from '../../shared/automations/history/automation-run'
@@ -142,11 +143,12 @@ function runLocalPrecheck(
     let timeout: ReturnType<typeof setTimeout> | null = null
     let forceKillTimer: ReturnType<typeof setTimeout> | null = null
 
-    const child = spawn(precheck.command, {
+    const invocation = shellCommandInvocation(precheck.command)
+    const child = spawn(invocation.file, invocation.args, {
       cwd: target.cwd,
       detached: process.platform !== 'win32',
       env: process.env,
-      shell: true,
+      windowsVerbatimArguments: invocation.windowsVerbatimArguments,
       windowsHide: true
     })
 

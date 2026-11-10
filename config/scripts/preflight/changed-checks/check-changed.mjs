@@ -102,7 +102,6 @@ function buildWorkspacePackages(root, env) {
     cwd: root,
     env,
     encoding: 'utf8',
-    shell: pnpm.shell,
     windowsHide: true
   })
   if (result.status !== 0) {

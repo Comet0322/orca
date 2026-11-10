@@ -50,11 +50,12 @@ function shortHash(hash) {
 
 function runInherited(command, args, options = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args, {
-      stdio: 'inherit',
-      shell: process.platform === 'win32',
-      ...options
-    })
+    const windows = process.platform === 'win32'
+    const child = spawn(
+      windows ? process.env.ComSpec || 'cmd.exe' : command,
+      windows ? ['/d', '/s', '/c', command, ...args] : args,
+      { stdio: 'inherit', ...options }
+    )
     child.on('error', reject)
     child.on('exit', (code, signal) => {
       if (code === 0) {

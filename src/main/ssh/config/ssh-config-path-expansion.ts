@@ -2,14 +2,14 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 
 /** Windows ssh -G leaves this token unexpanded; a literal path would hide system known_hosts, including changed keys. */
-const PROGRAMDATA_TOKEN = '__PROGRAMDATA__'
+const PROGRAMDATA_MARKER = '__PROGRAMDATA__'
 
 /** Match the whole token or a separator boundary so __PROGRAMDATA__evil is never rewritten. */
 function programDataTokenRemainder(filepath: string): string | null {
-  if (!filepath.startsWith(PROGRAMDATA_TOKEN)) {
+  if (!filepath.startsWith(PROGRAMDATA_MARKER)) {
     return null
   }
-  const rest = filepath.slice(PROGRAMDATA_TOKEN.length)
+  const rest = filepath.slice(PROGRAMDATA_MARKER.length)
   if (rest === '') {
     return rest
   }

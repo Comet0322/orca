@@ -7,6 +7,10 @@ const JS_CLI_EXTENSION = /\.[cm]?js$/i
 // Why: `npx` and `npm run` export npm's own CLI as npm_execpath, which would run npm, not pnpm.
 const NPM_OWN_CLI_PATH = /(?:^|[/\\])np[mx]-cli\.js$/i
 
+function windowsCommandProcessor() {
+  return process.env.ComSpec || 'cmd.exe'
+}
+
 function isFile(path) {
   try {
     return statSync(path).isFile()
@@ -28,13 +32,12 @@ export function resolvePnpmCliInvocation({
     !NPM_OWN_CLI_PATH.test(npmExecPath)
   ) {
     if (JS_CLI_EXTENSION.test(npmExecPath)) {
-      return { command: nodeExecPath, prefixArgs: [npmExecPath], shell: false }
+      return { command: nodeExecPath, prefixArgs: [npmExecPath] }
     }
-    return {
-      command: npmExecPath,
-      prefixArgs: [],
-      shell: platform === 'win32' && /\.(cmd|bat)$/i.test(npmExecPath)
+    if (platform === 'win32' && /\.(cmd|bat)$/i.test(npmExecPath)) {
+      return { command: windowsCommandProcessor(), prefixArgs: ['/d', '/s', '/c', npmExecPath] }
     }
+    return { command: npmExecPath, prefixArgs: [] }
   }
 
   // Native pnpm exec omits npm_execpath; setup installs no pnpm.cmd alongside pnpm.exe.
@@ -43,13 +46,12 @@ export function resolvePnpmCliInvocation({
       (path) => fileExists(path)
     )
     if (native) {
-      return { command: native, prefixArgs: [], shell: false }
+      return { command: native, prefixArgs: [] }
     }
   }
 
-  return {
-    command: platform === 'win32' ? 'pnpm.cmd' : 'pnpm',
-    prefixArgs: [],
-    shell: platform === 'win32'
+  if (platform === 'win32') {
+    return { command: windowsCommandProcessor(), prefixArgs: ['/d', '/s', '/c', 'pnpm.cmd'] }
   }
+  return { command: 'pnpm', prefixArgs: [] }
 }

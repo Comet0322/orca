@@ -9,11 +9,10 @@ const scriptDir = import.meta.dirname
 const mobileDir = path.resolve(scriptDir, '..')
 
 function pnpmCommand(args) {
-  return {
-    command: 'pnpm',
-    args,
-    shell: process.platform === 'win32'
+  if (process.platform === 'win32') {
+    return { command: process.env.ComSpec || 'cmd.exe', args: ['/d', '/s', '/c', 'pnpm', ...args] }
   }
+  return { command: 'pnpm', args }
 }
 
 function runPnpm(args) {
@@ -22,7 +21,6 @@ function runPnpm(args) {
     const child = spawn(pnpm.command, pnpm.args, {
       cwd: mobileDir,
       env: process.env,
-      shell: pnpm.shell,
       stdio: 'inherit'
     })
     child.on('error', reject)

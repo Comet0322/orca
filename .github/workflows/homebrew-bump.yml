@@ -57,26 +57,26 @@ jobs:
         run: |
           set -euo pipefail
           if [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9]+$ ]]; then
-            token="orca@rc"
-            branch_token="orca-rc"
+            cask_name="orca@rc"
+            branch_slug="orca-rc"
           elif [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            token="orca"
-            branch_token="orca"
+            cask_name="orca"
+            branch_slug="orca"
           else
             echo "::error::Unsupported desktop tag shape: $TAG" >&2
             exit 1
           fi
 
-          path="Casks/${token}.rb"
+          path="Casks/${cask_name}.rb"
           if [[ ! -f "$path" ]]; then
             echo "::error::Missing cask template: $path" >&2
             exit 1
           fi
 
-          echo "token=$token" >>"$GITHUB_OUTPUT"
+          echo "token=$cask_name" >>"$GITHUB_OUTPUT"
           echo "path=$path" >>"$GITHUB_OUTPUT"
-          echo "branch=bump/${branch_token}-${VERSION}" >>"$GITHUB_OUTPUT"
-          echo "title=${token} ${VERSION}" >>"$GITHUB_OUTPUT"
+          echo "branch=bump/${branch_slug}-${VERSION}" >>"$GITHUB_OUTPUT"
+          echo "title=${cask_name} ${VERSION}" >>"$GITHUB_OUTPUT"
 
       - name: Download DMGs and compute sha256
         id: hash

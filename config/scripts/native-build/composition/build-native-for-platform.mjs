@@ -106,10 +106,9 @@ function runPnpmScript(scriptName) {
     return Promise.resolve(1)
   }
   const label = scriptName.replace(/^build:|-macos$/g, '')
-  const { command, prefixArgs, shell } = resolvePnpmCliInvocation()
+  const { command, prefixArgs } = resolvePnpmCliInvocation()
   const child = spawn(command, [...prefixArgs, 'run', scriptName], {
     detached: true,
-    shell,
     stdio: ['ignore', 'pipe', 'pipe']
   })
   children.set(child, scriptName)

@@ -20,6 +20,7 @@ import {
   forceTerminateProcessTree,
   signalProcessTree
 } from '@orca/process-host/process-tree-termination'
+import { shellCommandInvocation } from '../shell-command-invocation'
 import { createOutputSink } from '@orca/process-host/bounded-output-sink'
 
 const HOOK_TIMEOUT = 120_000
@@ -246,9 +247,10 @@ export function runHook(
       resolve(result)
     }
     // exec ignores detached; spawn creates the process group needed for tree termination.
-    const child = spawn(script, {
+    const invocation = shellCommandInvocation(script, getHookShell())
+    const child = spawn(invocation.file, invocation.args, {
       cwd,
-      shell: getHookShell(),
+      windowsVerbatimArguments: invocation.windowsVerbatimArguments,
       // Unattended hooks must suppress interactive Git prompts while retaining cached auth (#7652).
       env: promptGuardShellEnv(shellHookEnv),
       stdio: ['ignore', 'pipe', 'pipe'],

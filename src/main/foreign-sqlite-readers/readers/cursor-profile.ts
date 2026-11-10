@@ -6,7 +6,7 @@ import {
   type CursorDesktopProfileReadResult
 } from '../cursor-profile-result'
 
-const TOKEN_KEY = 'cursorAuth/accessToken'
+const AUTH_ROW_KEY = 'cursorAuth/accessToken'
 const EMAIL_KEY = 'cursorAuth/cachedEmail'
 const MEMBERSHIP_KEY = 'cursorAuth/stripeMembershipType'
 const SUBSCRIPTION_KEY = 'cursorAuth/stripeSubscriptionStatus'
@@ -39,7 +39,7 @@ export function readCursorProfile(dbPath: string): CursorDesktopProfileReadResul
     const rows = rowsSchema.parse(
       db
         .prepare('SELECT key, value FROM ItemTable WHERE key IN (?, ?, ?, ?)')
-        .all(TOKEN_KEY, EMAIL_KEY, MEMBERSHIP_KEY, SUBSCRIPTION_KEY)
+        .all(AUTH_ROW_KEY, EMAIL_KEY, MEMBERSHIP_KEY, SUBSCRIPTION_KEY)
     )
     const byKey = new Map<string, string>()
     for (const row of rows) {
@@ -51,7 +51,7 @@ export function readCursorProfile(dbPath: string): CursorDesktopProfileReadResul
     return {
       status: 'ok',
       profile: {
-        accessToken: byKey.get(TOKEN_KEY) ?? null,
+        accessToken: byKey.get(AUTH_ROW_KEY) ?? null,
         email: byKey.get(EMAIL_KEY) ?? null,
         membershipType: byKey.get(MEMBERSHIP_KEY) ?? null,
         subscriptionStatus: byKey.get(SUBSCRIPTION_KEY) ?? null

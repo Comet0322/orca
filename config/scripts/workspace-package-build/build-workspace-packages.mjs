@@ -91,11 +91,10 @@ function writeStamp(packageDir, inputs) {
 
 function runPackageBuild(name) {
   // Why not @orca/process-host: this builds it, so its dist may not exist yet.
-  const { command, prefixArgs, shell } = resolvePnpmCliInvocation()
+  const { command, prefixArgs } = resolvePnpmCliInvocation()
   const result = spawnSync(command, [...prefixArgs, '--filter', name, 'build'], {
     cwd: root,
-    stdio: 'inherit',
-    shell
+    stdio: 'inherit'
   })
   if (result.error) {
     throw result.error

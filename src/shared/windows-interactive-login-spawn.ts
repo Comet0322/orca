@@ -23,7 +23,7 @@ function encodeUtf8(value: string): string {
 
 function buildPidRelayScript(command: string, args: string[], pidFilePath: string): string {
   const decode =
-    'function Read-OrcaValue([string]$Value) { [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($Value)) }'
+    'function Read-OrcaValue([string]$Value) { $Bytes = [Convert]::FromBase64String($Value); [Text.Encoding]::UTF8.GetString($Bytes) }'
   const encodedArgs = args.map((arg) => `(Read-OrcaValue '${encodeUtf8(arg)}')`).join(',')
   return [
     decode,

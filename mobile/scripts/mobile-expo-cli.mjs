@@ -16,12 +16,14 @@ export function getMobileExpoExecutablePath(mobileDir) {
 
 function runPnpmInstall(mobileDir) {
   return new Promise((resolve, reject) => {
-    const install = spawn('pnpm', ['install', '--frozen-lockfile'], {
-      cwd: mobileDir,
-      env: process.env,
-      shell: process.platform === 'win32',
-      stdio: 'inherit'
-    })
+    const windows = process.platform === 'win32'
+    const install = spawn(
+      windows ? process.env.ComSpec || 'cmd.exe' : 'pnpm',
+      windows
+        ? ['/d', '/s', '/c', 'pnpm', 'install', '--frozen-lockfile']
+        : ['install', '--frozen-lockfile'],
+      { cwd: mobileDir, env: process.env, stdio: 'inherit' }
+    )
     install.on('error', reject)
     install.on('exit', (code, signal) => {
       if (signal) {
