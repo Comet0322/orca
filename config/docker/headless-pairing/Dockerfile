@@ -39,4 +39,5 @@ RUN useradd --create-home --shell /bin/bash orca
 
 COPY config/docker/headless-pairing/run-appimage-case.sh /usr/local/bin/run-appimage-case
 
+USER orca
 ENTRYPOINT ["/usr/local/bin/run-appimage-case"]

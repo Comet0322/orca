@@ -17,3 +17,5 @@ RUN sed -i \
     && chmod 700 /root/.ssh
 
 EXPOSE 22
+RUN useradd --create-home --shell /bin/sh orca
+USER orca

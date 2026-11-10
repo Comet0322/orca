@@ -641,7 +641,9 @@ jobs:
       contents: read
       actions: read
     uses: ./.github/workflows/dev-channel-win-build.yml
-    secrets: inherit
+    secrets:
+      HOURLY_RELEASE_APP_ID: ${{ secrets.HOURLY_RELEASE_APP_ID }}
+      HOURLY_RELEASE_APP_PRIVATE_KEY: ${{ secrets.HOURLY_RELEASE_APP_PRIVATE_KEY }}
     with:
       channel: adhoc
       tag: v${{ needs.orcad-template-support.outputs.version }}
@@ -662,7 +664,9 @@ jobs:
       contents: read
       actions: read
     uses: ./.github/workflows/dev-channel-win-publish.yml
-    secrets: inherit
+    secrets:
+      HOURLY_RELEASE_APP_ID: ${{ secrets.HOURLY_RELEASE_APP_ID }}
+      HOURLY_RELEASE_APP_PRIVATE_KEY: ${{ secrets.HOURLY_RELEASE_APP_PRIVATE_KEY }}
     with:
       channel: adhoc
       tag: v${{ needs.orcad-template-support.outputs.version }}

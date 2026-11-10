@@ -9,6 +9,9 @@ on:
         description: Release tag to sync (e.g. v1.3.25)
         required: true
         type: string
+    secrets:
+      BUFO_BOT_PRIVATE_KEY:
+        required: false
   workflow_dispatch:
     inputs:
       tag:

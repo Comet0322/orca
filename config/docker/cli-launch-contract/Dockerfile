@@ -36,4 +36,5 @@ RUN useradd --create-home --shell /bin/bash orca
 
 COPY run-cli-case.sh /usr/local/bin/run-cli-case
 
+USER orca
 ENTRYPOINT ["/usr/local/bin/run-cli-case"]

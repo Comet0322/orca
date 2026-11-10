@@ -15,4 +15,5 @@ COPY --from=node /usr/local/bin/node /usr/local/bin/node
 COPY process-fixture.cjs run-cases.cjs terminal-scope-cases.cjs /opt/daemon-scope-lifetime/
 
 STOPSIGNAL SIGRTMIN+3
+USER orca-repro
 CMD ["/lib/systemd/systemd"]

@@ -2362,7 +2362,9 @@ jobs:
     uses: ./.github/workflows/release-mirror-r2.yml
     with:
       tag: ${{ needs.cut.outputs.tag }}
-    secrets: inherit
+    secrets:
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
 
   homebrew-bump-published-rc-draft:
     needs:
@@ -2373,7 +2375,8 @@ jobs:
     uses: ./.github/workflows/homebrew-bump.yml
     with:
       tag: ${{ needs.cut.outputs.latest_published_rc_tag }}
-    secrets: inherit
+    secrets:
+      BUFO_BOT_PRIVATE_KEY: ${{ secrets.BUFO_BOT_PRIVATE_KEY }}
 
   homebrew-bump:
     needs:
@@ -2384,4 +2387,5 @@ jobs:
     uses: ./.github/workflows/homebrew-bump.yml
     with:
       tag: ${{ needs.cut.outputs.tag }}
-    secrets: inherit
+    secrets:
+      BUFO_BOT_PRIVATE_KEY: ${{ secrets.BUFO_BOT_PRIVATE_KEY }}

@@ -8,4 +8,6 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 STOPSIGNAL SIGRTMIN+3
+RUN useradd --create-home --shell /bin/sh orca
+USER orca
 CMD ["/lib/systemd/systemd"]

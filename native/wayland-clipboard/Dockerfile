@@ -4,3 +4,5 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     build-essential libwayland-dev python3 libgtk-3-0 xvfb xclip \
     $(if [ "$TARGETARCH" = arm64 ]; then echo gcc-x86-64-linux-gnu libc6-dev-amd64-cross; else echo gcc-aarch64-linux-gnu libc6-dev-arm64-cross; fi) \
     && rm -rf /var/lib/apt/lists/*
+RUN useradd --create-home --shell /bin/sh orca
+USER orca

@@ -15,6 +15,11 @@ on:
         description: Release tag used when staging the Windows artifacts
         required: true
         type: string
+    secrets:
+      HOURLY_RELEASE_APP_ID:
+        required: false
+      HOURLY_RELEASE_APP_PRIVATE_KEY:
+        required: false
 
 permissions:
   contents: read

@@ -30,3 +30,5 @@ RUN corepack enable \
   && pnpm --version
 
 WORKDIR /workspace
+RUN useradd --create-home --shell /bin/sh orca
+USER orca

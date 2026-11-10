@@ -27,4 +27,6 @@ RUN set -eu \
 COPY run-case.sh /usr/local/bin/run-daemon-shutdown-descendants
 COPY fixture.cjs /opt/daemon-shutdown-descendants/fixture.cjs
 
+RUN useradd --create-home --shell /bin/sh orca
+USER orca
 ENTRYPOINT ["/usr/local/bin/run-daemon-shutdown-descendants"]

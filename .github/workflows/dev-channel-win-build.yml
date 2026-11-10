@@ -40,6 +40,11 @@ on:
         required: false
         type: boolean
         default: false
+    secrets:
+      HOURLY_RELEASE_APP_ID:
+        required: false
+      HOURLY_RELEASE_APP_PRIVATE_KEY:
+        required: false
   workflow_dispatch:
     inputs:
       channel:

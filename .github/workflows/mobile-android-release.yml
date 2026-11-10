@@ -292,7 +292,9 @@ jobs:
     with:
       tag: mobile-android-v${{ needs.android-build.outputs.version }}
       assets: app-release.apk
-    secrets: inherit
+    secrets:
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
 
   # Keep site bump advisory after publication; failure only leaves its download link on the prior APK.
   # Why after the mirror: the site's mirror link uses the bumped version, so upload the APK first

@@ -17,6 +17,11 @@ on:
         required: false
         default: ''
         type: string
+    secrets:
+      R2_ACCESS_KEY_ID:
+        required: false
+      R2_SECRET_ACCESS_KEY:
+        required: false
   workflow_dispatch:
     inputs:
       tag:
