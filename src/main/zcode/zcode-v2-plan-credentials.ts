@@ -62,11 +62,12 @@ function decrypt(value: string, host: ZcodeCredentialHost): string {
   if (iv.length !== 12 || authTag.length !== 16) {
     throw new Error('Invalid credential')
   }
-  const secret =
-    host.env.ZCODE_CREDENTIAL_SECRET?.trim() ||
-    `zcode-credential-fallback:${host.platform}:${host.home}:${host.username}`
+  const secret = host.env.ZCODE_CREDENTIAL_SECRET?.trim()
+  if (!secret) {
+    throw new Error('ZCODE_CREDENTIAL_SECRET is required to read enc:v1 credentials')
+  }
   const key = createHash('sha256').update(secret).digest()
-  const cipher = createDecipheriv('aes-256-gcm', key, iv)
+  const cipher = createDecipheriv('aes-256-gcm', key, iv, { authTagLength: 16 })
   cipher.setAuthTag(authTag)
   return Buffer.concat([
     cipher.update(Buffer.from(ciphertext, 'base64url')),

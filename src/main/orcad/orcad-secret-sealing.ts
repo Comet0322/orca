@@ -34,7 +34,8 @@ export function openOrcadSecret(key: Buffer, sealed: Buffer): string {
   const decipher = createDecipheriv(
     'aes-256-gcm',
     key,
-    sealed.subarray(MAGIC.length, MAGIC.length + IV_BYTES)
+    sealed.subarray(MAGIC.length, MAGIC.length + IV_BYTES),
+    { authTagLength: TAG_BYTES }
   )
   decipher.setAAD(MAGIC)
   decipher.setAuthTag(sealed.subarray(MAGIC.length + IV_BYTES, header))

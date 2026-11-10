@@ -159,12 +159,15 @@ jobs:
           ORCA_BALANCE_UNIT_SHARDS: '1'
           ORCA_BACKGROUND_LAUNCH: '1'
           ORCA_UNIT_PHASE_REPORT: ${{ inputs.phase_diagnostics && 'ci-shards/unit-phases.json' || '' }}
+          SHARD_INDEX: ${{ matrix.shard.index }}
+          SHARD_COUNT: ${{ matrix.shard.count }}
+          MAX_WORKERS_ARG: ${{ inputs.runner == 'blacksmith-8vcpu-ubuntu-2404' && '--maxWorkers=8' || (runner.arch == 'ARM64' || inputs.runner == 'blacksmith-4vcpu-ubuntu-2404' || inputs.runner == 'ubuntu-24.04') && '--maxWorkers=4' || '' }}
         run: |
           ORCA_SHARD_SOURCE_SHA="$(git rev-parse HEAD)"
           export ORCA_SHARD_SOURCE_SHA
           node config/scripts/test-runtime/execution-policy/run-vitest.mjs run --config config/vitest.config.ts \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.count }} \
-            ${{ inputs.runner == 'blacksmith-8vcpu-ubuntu-2404' && '--maxWorkers=8' || (runner.arch == 'ARM64' || inputs.runner == 'blacksmith-4vcpu-ubuntu-2404' || inputs.runner == 'ubuntu-24.04') && '--maxWorkers=4' || '' }}
+            --shard="$SHARD_INDEX/$SHARD_COUNT" \
+            $MAX_WORKERS_ARG
 
       - name: Seal unit module cache
         id: module-cache-seal
