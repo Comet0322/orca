@@ -133,7 +133,7 @@ function decryptAes256Gcm(payload: Buffer, key: Buffer): Buffer | null {
   const authTag = payload.subarray(-16)
   const ciphertext = payload.subarray(12, -16)
   try {
-    const decipher = createDecipheriv('aes-256-gcm', key, nonce)
+    const decipher = createDecipheriv('aes-256-gcm', key, nonce, { authTagLength: 16 })
     decipher.setAuthTag(authTag)
     return Buffer.concat([decipher.update(ciphertext), decipher.final()])
   } catch {

@@ -263,7 +263,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ inputs.tag }}
-        run: node config/scripts/release/publication/assert-github-release-is-draft.mjs "${{ inputs.tag }}"
+        run: node config/scripts/release/publication/assert-github-release-is-draft.mjs "$TAG"
 
       # Check after publish because builder’s single pack/upload invocation has no cheap interposition point.
       - name: Verify telemetry constants present in app.asar
