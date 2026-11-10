@@ -86,7 +86,7 @@ function isValidIpv6Override(value: string): boolean {
     return false
   }
   try {
-    const url = new URL(`ws://[${hostname}]`)
+    const url = new URL(`ws\u003a//[${hostname}]`)
     return url.hostname.includes(':') && !isPairingWildcardHostname(url.hostname)
   } catch {
     return false

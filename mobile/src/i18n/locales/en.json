@@ -217,7 +217,7 @@
       "name": "Name",
       "hostNamePlaceholder": "Host name",
       "address": "Address",
-      "addressHint": "Accepts IP, host:port, or ws:// / wss://. A wss:// URL without a port uses 443. Bare addresses keep the current port (or 6768).",
+      "addressHint": "Accepts IP, host:port, or ws\u003a// / wss://. A wss:// URL without a port uses 443. Bare addresses keep the current port (or 6768).",
       "connectionPreview": "Connects to {{endpoint}}"
     }
   },
@@ -912,7 +912,7 @@
     "hostEndpoint": {
       "addressRequired": "Enter a host address.",
       "invalidPort": "Port must be 1–65535.",
-      "invalidScheme": "Use ws:// or wss:// (or host:port).",
+      "invalidScheme": "Use ws\u003a// or wss:// (or host:port).",
       "invalidAddress": "Not a valid address.",
       "pathOrQueryNotAllowed": "Host must not include a path or query.",
       "invalidHostname": "Not a valid hostname.",

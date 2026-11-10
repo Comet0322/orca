@@ -136,7 +136,7 @@ export function getRuntimeServerAvailableUpdateText(
     : t('auto.components.settings.RemoteServerUpdateStatus.available', 'Update available')
 }
 
-/** host:port of a ws:// endpoint; the raw string when it isn't a URL. */
+/** host:port of a plain ws endpoint; the raw string when it isn't a URL. */
 export function formatRuntimeEndpointAddress(endpoint: string | undefined): string | null {
   if (!endpoint) {
     return null

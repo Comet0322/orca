@@ -60,7 +60,7 @@ export default function WebConnect({
     }
     if (isMixedContentWebSocket(parsedOffer.endpoint)) {
       setError(
-        'This HTTPS page cannot connect to a plain ws:// Orca server. Open the web client over HTTP or pair with a wss:// endpoint.'
+        'This HTTPS page cannot connect to a plain ws\u003a// Orca server. Open the web client over HTTP or pair with a wss:// endpoint.'
       )
       return
     }

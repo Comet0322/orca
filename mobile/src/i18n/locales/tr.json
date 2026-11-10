@@ -1139,7 +1139,7 @@
       "invalidAddress": "Geçerli bir adres değil.",
       "invalidHostname": "Geçerli bir ana makine adı değil.",
       "invalidPort": "Port 1–65535 aralığında olmalıdır.",
-      "invalidScheme": "ws:// veya wss:// (ya da host:port) kullanın.",
+      "invalidScheme": "ws\u003a// veya wss:// (ya da host:port) kullanın.",
       "pathOrQueryNotAllowed": "Sunucu adresi yol veya sorgu içermemelidir."
     },
     "pairConfirmState": {
@@ -1556,7 +1556,7 @@
   "host": {
     "edit": {
       "address": "Adres",
-      "addressHint": "IP, host:port veya ws:// / wss:// kabul edilir. Bağlantı noktası belirtilmeyen wss:// URL'lerinde 443 kullanılır. Yalnızca adres girilirse mevcut bağlantı noktası (veya 6768) korunur.",
+      "addressHint": "IP, host:port veya ws\u003a// / wss:// kabul edilir. Bağlantı noktası belirtilmeyen wss:// URL'lerinde 443 kullanılır. Yalnızca adres girilirse mevcut bağlantı noktası (veya 6768) korunur.",
       "connectionPreview": "Bağlanılacak adres: {{endpoint}}",
       "goBack": "Geri git",
       "help": "Görünen adı veya bağlantı adresini değiştirin. Masaüstünün bildirdiği adı kullanmak için ad alanını boş bırakın. Adres değişikliği yalnızca bu telefonun bağlandığı yeri değiştirir; yeniden eşleştirme yapmaz. Aynı masaüstüne farklı bir IP adresinden erişilebildiğinde bunu kullanın (örneğin evdeki LAN veya Tailscale üzerinden).",

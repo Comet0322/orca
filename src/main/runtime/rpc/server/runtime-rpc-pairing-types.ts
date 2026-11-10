@@ -26,7 +26,7 @@ export const WS_BIND_HOST_ALL_INTERFACES = '0.0.0.0'
 
 // Bracket IPv6 or new URL cannot parse the advertised endpoint.
 export function formatWsEndpoint(host: string, port: number): string {
-  return `ws://${host.includes(':') ? `[${host}]` : host}:${port}`
+  return `ws\u003a//${host.includes(':') ? `[${host}]` : host}:${port}`
 }
 
 export type OrcaRuntimeRpcServerOptions = {

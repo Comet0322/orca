@@ -30,7 +30,7 @@ export function getEphemeralVmRecipeResultWarnings(
   if (isPublicInsecureWebSocketEndpoint(pairing.endpoint)) {
     warnings.push({
       id: 'recipe.result.endpoint.public_ws',
-      message: `Recipe pairing endpoint uses insecure public ws:// transport: ${pairing.endpoint}`,
+      message: `Recipe pairing endpoint uses insecure public ws\u003a// transport: ${pairing.endpoint}`,
       remediation: 'Use wss://, a private network, or an authenticated tunnel for public endpoints.'
     })
   }

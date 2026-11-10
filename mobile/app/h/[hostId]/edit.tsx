@@ -294,7 +294,7 @@ export default function EditHostScreen() {
             <Text style={styles.hint}>
               {t(
                 'host.edit.addressHint',
-                'Accepts IP, host:port, or ws:// / wss://. A wss:// URL without a port uses 443. Bare addresses keep the current port (or 6768).'
+                'Accepts IP, host:port, or ws\u003a// / wss://. A wss:// URL without a port uses 443. Bare addresses keep the current port (or 6768).'
               )}
             </Text>
 

@@ -65,7 +65,7 @@ export function installBrowserSessionUserAgentPolicy(
     }
   }
   sess.webRequest.onBeforeSendHeaders(
-    { urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] },
+    { urls: ['http://*/*', 'https://*/*', 'ws\u003a//*/*', 'wss://*/*'] },
     (details, callback) => {
       reportBrowserSessionWebRequest(sess, 'onBeforeSendHeaders', details)
       applyUserAgentPolicy(details)

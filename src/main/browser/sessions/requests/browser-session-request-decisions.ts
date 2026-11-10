@@ -135,7 +135,7 @@ export function installBrowserSessionRequestLifecycle(session: Electron.Session)
       warn(event, error)
     }
   }
-  const filter = { urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] }
+  const filter = { urls: ['http://*/*', 'https://*/*', 'ws\u003a//*/*', 'wss://*/*'] }
   session.webRequest.onCompleted(filter, (details) => finished('onCompleted', details))
   session.webRequest.onErrorOccurred(filter, (details) => finished('onErrorOccurred', details))
 }
@@ -158,7 +158,7 @@ export function installBrowserSessionHeadersReceived(session: Electron.Session):
   }
   headersReceivedSessions.add(session)
   session.webRequest.onHeadersReceived(
-    { urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] },
+    { urls: ['http://*/*', 'https://*/*', 'ws\u003a//*/*', 'wss://*/*'] },
     (details, callback) => {
       reportBrowserSessionWebRequest(session, 'onHeadersReceived', details)
       let response: Electron.HeadersReceivedResponse | null = null

@@ -291,7 +291,7 @@ function validateHostname(host: string): string | null {
       return hostEndpointCopy.invalidHostname()
     }
     try {
-      new URL(`ws://[${host}]:${DEFAULT_PORT}`)
+      new URL(`ws\u003a//[${host}]:${DEFAULT_PORT}`)
     } catch {
       return hostEndpointCopy.invalidHostname()
     }

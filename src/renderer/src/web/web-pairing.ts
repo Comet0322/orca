@@ -205,7 +205,7 @@ function base64UrlToBytes(value: string): Uint8Array {
 
 function normalizeWebSocketEndpoint(endpoint: string): string {
   if (endpoint.startsWith('http://')) {
-    return `ws://${endpoint.slice('http://'.length)}`
+    return `ws\u003a//${endpoint.slice('http://'.length)}`
   }
   if (endpoint.startsWith('https://')) {
     return `wss://${endpoint.slice('https://'.length)}`

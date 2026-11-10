@@ -1135,7 +1135,7 @@
       "invalidAddress": "無効なアドレスです。",
       "invalidHostname": "無効なホスト名です。",
       "invalidPort": "ポート番号は1〜65535で指定してください。",
-      "invalidScheme": "ws://、wss://、または host:port を使用してください。",
+      "invalidScheme": "ws\u003a//、wss://、または host:port を使用してください。",
       "pathOrQueryNotAllowed": "ホストのアドレスにパスやクエリを含めないでください。"
     },
     "pairConfirmState": {
@@ -1552,7 +1552,7 @@
   "host": {
     "edit": {
       "address": "アドレス",
-      "addressHint": "IP、host:port、ws:// / wss:// を使用できます。ポートを省略した wss:// URL は 443 を使用します。アドレスのみの場合は、現在のポート（未設定の場合は 6768）を引き継ぎます。",
+      "addressHint": "IP、host:port、ws\u003a// / wss:// を使用できます。ポートを省略した wss:// URL は 443 を使用します。アドレスのみの場合は、現在のポート（未設定の場合は 6768）を引き継ぎます。",
       "connectionPreview": "{{endpoint}} に接続します",
       "goBack": "戻る",
       "help": "表示名や接続先アドレスを変更できます。名前を空欄にすると、デスクトップから取得した名前を使用します。アドレスを編集しても、このスマートフォンの接続先が変わるだけで、再ペアリングは行われません。同じデスクトップに別の IP で接続できる場合（自宅の LAN と Tailscale の切り替えなど）に使用してください。",

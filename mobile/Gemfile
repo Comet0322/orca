@@ -4,5 +4,3 @@ source "https://rubygems.org"
 
 gem "fastlane", "2.240.1"
 
-# Avoid downloading an untracked npm installer during a release.
-gem "cocoapods", "1.17.0"

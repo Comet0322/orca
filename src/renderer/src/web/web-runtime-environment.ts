@@ -233,7 +233,7 @@ export function updateStoredEnvironmentRuntimeId(
 }
 
 export function isMixedContentWebSocket(endpoint: string): boolean {
-  return window.location.protocol === 'https:' && endpoint.startsWith('ws://')
+  return window.location.protocol === 'https:' && endpoint.startsWith('ws\u003a//')
 }
 
 /** Forget the pairing code once a device key replaced it; the pairing itself is unchanged. */

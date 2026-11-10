@@ -96,7 +96,7 @@ jobs:
 
       - name: Install CocoaPods
         working-directory: mobile/ios
-        run: bundle exec pod install
+        run: pod install
 
       # Import exported distribution .p12 into ephemeral runner keychain: provisioning updates/API key cannot recreate its private key.
       - name: Import distribution certificate

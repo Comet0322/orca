@@ -74,7 +74,7 @@ function parseHostOverride(value: string): { hostname: string; port: string } | 
     if (rawIpVersion !== 6 && value.endsWith(':')) {
       return null
     }
-    const url = new URL(rawIpVersion === 6 ? `ws://[${value}]` : `ws://${value}`)
+    const url = new URL(rawIpVersion === 6 ? `ws\u003a//[${value}]` : `ws\u003a//${value}`)
     if (
       !url.hostname ||
       url.username ||

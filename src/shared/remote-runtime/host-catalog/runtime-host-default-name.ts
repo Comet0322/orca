@@ -13,7 +13,7 @@ export function defaultServerNameForAccessLink(
   const endpoint = parsed.value.displayEndpoint
   let host = endpoint
   try {
-    host = new URL(`ws://${endpoint}`).hostname.replace(/^\[|\]$/g, '')
+    host = new URL(`ws\u003a//${endpoint}`).hostname.replace(/^\[|\]$/g, '')
   } catch {
     // Not URL-shaped; the endpoint itself is the best name.
   }

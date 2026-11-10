@@ -1135,7 +1135,7 @@
       "invalidAddress": "地址无效。",
       "invalidHostname": "主机名无效。",
       "invalidPort": "端口号必须为 1–65535。",
-      "invalidScheme": "请使用 ws:// 或 wss://（或 host:port）。",
+      "invalidScheme": "请使用 ws\u003a// 或 wss://（或 host:port）。",
       "pathOrQueryNotAllowed": "主机地址不得包含路径或查询参数。"
     },
     "pairConfirmState": {
@@ -1552,7 +1552,7 @@
   "host": {
     "edit": {
       "address": "地址",
-      "addressHint": "支持 IP、host:port 或 ws:// / wss://。wss:// URL 未指定端口时使用 443。仅输入地址时保留当前端口（或使用 6768）。",
+      "addressHint": "支持 IP、host:port 或 ws\u003a// / wss://。wss:// URL 未指定端口时使用 443。仅输入地址时保留当前端口（或使用 6768）。",
       "connectionPreview": "连接到 {{endpoint}}",
       "goBack": "返回",
       "help": "更改显示名称或连接地址。名称留空时，将使用桌面提供的名称。更改地址只会切换此手机的连接地址，不会重新配对。当同一桌面可通过不同 IP 访问时（例如家庭局域网与 Tailscale），可使用此功能。",

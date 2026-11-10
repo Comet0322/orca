@@ -1,4 +1,4 @@
-// WebSocket transport letting mobile clients reach the Orca runtime over LAN (ws://); auth is per-device tokens, and E2EE runs above this layer.
+// WebSocket transport letting mobile clients reach the Orca runtime over LAN (plain ws); auth is per-device tokens, and E2EE runs above this layer.
 import { createServer as createHttpServer, type Server as HttpServer } from 'node:http'
 import type { Socket } from 'node:net'
 import { WebSocketServer, type WebSocket } from 'ws'

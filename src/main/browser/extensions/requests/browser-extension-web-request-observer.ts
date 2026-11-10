@@ -76,7 +76,7 @@ function forward(
 
 const observedSessions = new WeakSet<Electron.Session>()
 const watchedSessions = new WeakSet<Electron.Session>()
-const OBSERVE_ALL = { urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] }
+const OBSERVE_ALL = { urls: ['http://*/*', 'https://*/*', 'ws\u003a//*/*', 'wss://*/*'] }
 
 /** The events Orca does not otherwise handle, installed once a webRequest extension loads. */
 function observeRemainingEvents(session: Electron.Session): void {

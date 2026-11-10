@@ -1135,7 +1135,7 @@
       "invalidAddress": "位址無效。",
       "invalidHostname": "主機名稱無效。",
       "invalidPort": "連接埠號碼須為 1–65535。",
-      "invalidScheme": "請使用 ws:// 或 wss://（或 host:port）。",
+      "invalidScheme": "請使用 ws\u003a// 或 wss://（或 host:port）。",
       "pathOrQueryNotAllowed": "主機位址不得包含路徑或查詢字串。"
     },
     "pairConfirmState": {
@@ -1552,7 +1552,7 @@
   "host": {
     "edit": {
       "address": "位址",
-      "addressHint": "可輸入 IP、host:port 或 ws:// / wss://。wss:// URL 未指定連接埠時會使用 443。僅輸入位址時，會保留目前的連接埠（或使用 6768）。",
+      "addressHint": "可輸入 IP、host:port 或 ws\u003a// / wss://。wss:// URL 未指定連接埠時會使用 443。僅輸入位址時，會保留目前的連接埠（或使用 6768）。",
       "connectionPreview": "將連線至 {{endpoint}}",
       "goBack": "返回",
       "help": "變更顯示名稱或連線位址。名稱留空時，會使用電腦回報的名稱。變更位址只會切換這支手機的連線位址，不會重新配對。適用於透過不同 IP 連線至同一台電腦的情況（例如家用區域網路或 Tailscale）。",

@@ -56,7 +56,7 @@ function requestMethods(rule: DnrRule): number | DnrRuleProblem {
   if (included !== 0) {
     return included
   }
-  // An exclusion list keeps NON_HTTP, so ws:// and file:// still match.
+  // An exclusion list keeps NON_HTTP, so plain ws and file:// still match.
   return excluded !== 0 ? REQUEST_METHOD_ANY & ~excluded : REQUEST_METHOD_ANY
 }
 

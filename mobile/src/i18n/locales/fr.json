@@ -1178,7 +1178,7 @@
       "invalidAddress": "Adresse invalide.",
       "invalidHostname": "Nom d'hôte invalide.",
       "invalidPort": "Le port doit être compris entre 1 et 65535.",
-      "invalidScheme": "Utilisez ws:// ou wss:// (ou host:port).",
+      "invalidScheme": "Utilisez ws\u003a// ou wss:// (ou host:port).",
       "pathOrQueryNotAllowed": "L'adresse de l'hôte ne doit contenir ni chemin ni chaîne de requête."
     },
     "pairConfirmState": {
@@ -1597,7 +1597,7 @@
   "host": {
     "edit": {
       "address": "Adresse",
-      "addressHint": "Accepte une adresse IP, host:port ou ws:// / wss://. Une URL wss:// sans port utilise le port 443. Une adresse seule conserve le port actuel (ou 6768).",
+      "addressHint": "Accepte une adresse IP, host:port ou ws\u003a// / wss://. Une URL wss:// sans port utilise le port 443. Une adresse seule conserve le port actuel (ou 6768).",
       "connectionPreview": "Connexion à {{endpoint}}",
       "goBack": "Précédent",
       "help": "Modifiez le nom affiché ou l'adresse de connexion. Laissez le nom vide pour utiliser celui indiqué par l'ordinateur. Modifier l'adresse change uniquement l'adresse à laquelle ce téléphone se connecte, sans nouvel appairage. Utilisez cette option si le même ordinateur est accessible à une autre adresse IP (par exemple, via le LAN domestique ou Tailscale).",

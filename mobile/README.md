@@ -74,9 +74,9 @@ job reports in its summary whether the PR changes them, which means dev clients 
 1. Open Orca desktop.
 2. Go to Settings > Mobile.
 3. Scan the pairing QR code from the mobile app.
-4. Confirm the mobile host endpoint is `ws://<desktop-ip>:6768`.
+4. Confirm the mobile host endpoint is `<desktop-ip>:6768`.
 
-For the Android emulator, use `ws://10.0.2.2:6768`. For a physical phone, use the desktop LAN IP, for example `ws://192.168.0.179:6768`.
+For the Android emulator, use `10.0.2.2:6768`. For a physical phone, use the desktop LAN IP, for example `192.168.0.179:6768`.
 
 If the phone has a stale host entry, remove it from the app and pair again.
 

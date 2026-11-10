@@ -1139,7 +1139,7 @@
       "invalidAddress": "Keine gültige Adresse.",
       "invalidHostname": "Kein gültiger Hostname.",
       "invalidPort": "Port muss zwischen 1 und 65535 liegen.",
-      "invalidScheme": "ws:// oder wss:// (oder host:port) verwenden.",
+      "invalidScheme": "ws\u003a// oder wss:// (oder host:port) verwenden.",
       "pathOrQueryNotAllowed": "Die Host-Adresse darf keinen Pfad und keine Abfrage enthalten."
     },
     "pairConfirmState": {
@@ -1556,7 +1556,7 @@
   "host": {
     "edit": {
       "address": "Adresse",
-      "addressHint": "Akzeptiert IP-Adressen, host:port oder ws:// / wss://. Eine URL mit wss:// verwendet ohne Portangabe 443. Bei Adressen ohne Protokoll- und Portangabe bleibt der aktuelle Port erhalten (oder 6768).",
+      "addressHint": "Akzeptiert IP-Adressen, host:port oder ws\u003a// / wss://. Eine URL mit wss:// verwendet ohne Portangabe 443. Bei Adressen ohne Protokoll- und Portangabe bleibt der aktuelle Port erhalten (oder 6768).",
       "connectionPreview": "Verbindet mit {{endpoint}}",
       "goBack": "Zurück navigieren",
       "help": "Anzeigenamen oder Verbindungsadresse ändern. Das Namensfeld leer lassen, um den vom Desktop gemeldeten Namen zu verwenden. Eine Adressänderung ändert nur das Verbindungsziel dieses Smartphones – es wird keine neue Kopplung hergestellt. Nützlich, wenn derselbe Desktop unter einer anderen IP-Adresse erreichbar ist (z. B. im Heim-LAN statt über Tailscale).",
